@@ -89,15 +89,17 @@ let g_lastMouseY = null;
 let g_globalAngleX = 0;
 let g_globalAngleY = 0;
 let g_globalAngleZ = 0;
+let g_tailPos = 0;
 
 function addActionsForHtmlUI() {
-    document.getElementById('angleSlider').addEventListener('mousemove', function() {g_globalAngleY = this.value; renderAllShapes();})
-    document.getElementById('slider').addEventListener('mousemove', function() {g_mouthPosY = this.value; renderAllShapes();})
+    document.getElementById('angleSlider').addEventListener('mousemove', function() {g_globalAngleY = this.value; renderAllShapes();});
+    document.getElementById('slider').addEventListener('mousemove', function() {g_mouthPosY = this.value; renderAllShapes();});
+    document.getElementById('tail_slider').addEventListener('mousemove', function() {g_tailPos = this.value; renderAllShapes();});
     document.getElementById('reset_cam').addEventListener('mouseup', function() {
         g_globalAngleX = 0;
         g_globalAngleY = 0;
         g_globalAngleZ = 0;
-    })
+    });
 }
 
 function main() {
@@ -441,14 +443,15 @@ function renderAllShapes() {
     var tail2 = new Cube();
     tail2.color = ORANGE;
     tail2.matrix.translate(0.35,-1.1, 1.25);
-    tail2.matrix.rotate(120,0, 1, 0);
+    tail2.matrix.rotate(120 ,0, 1, 0);
+    tail2.matrix.rotate(Math.abs(Math.sin(10 * g_seconds)),0, 1, 0);
     tail2.matrix.scale(.1,.1,.45)
     tail2.render(1, 0.55, 0.1);
 
     var tail3 = new Cube();
     tail3.color = ORANGE2;
     tail3.matrix.translate(0.75,-1.1, 1);
-    tail3.matrix.rotate(Math.abs(10 * Math.sin(g_seconds)), 1, 0, 0);
+    tail3.matrix.rotate(g_tailPos * 10, 1, 0, 0);
     var tail3_Mat = new Matrix4(tail3.matrix);
     tail3.matrix.rotate(180,0, 1, 0);
     tail3.matrix.scale(.1,.1,.2);
@@ -458,7 +461,7 @@ function renderAllShapes() {
     tail4.color = ORANGE;
     tail4.matrix = new Matrix4(tail3_Mat);
     tail4.matrix.translate(0, 0, -0.2);
-    tail4.matrix.rotate(Math.abs(20 * Math.sin(g_seconds)), 1, 0, 0);
+    tail4.matrix.rotate(g_tailPos * 20, 1, 0, 0);
     var tail4_Mat = new Matrix4(tail4.matrix);
     tail4.matrix.rotate(190, 0, 1, 0);
     tail4.matrix.scale(.1,.1,.2);
@@ -468,7 +471,7 @@ function renderAllShapes() {
     tail5.color = [1, 1, 1, 1.0];
     tail5.matrix = new Matrix4(tail4_Mat);
     tail5.matrix.translate(-0.025, 0, -0.2);
-    tail5.matrix.rotate(Math.abs(50 * Math.sin(g_seconds)), 1, 0, 0);
+    tail5.matrix.rotate(g_tailPos * 50, 1, 0, 0);
     //var tail5_Mat = new Matrix4(tail4.matrix);
     tail5.matrix.rotate(190, 0, 1, 0);
     tail5.matrix.scale(.1,.1,.2);
