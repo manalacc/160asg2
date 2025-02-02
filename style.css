@@ -1,0 +1,26 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    vertical-align: middle;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+}
+
+.container {
+    display: flex-box;
+    width: 800px;
+    border-radius: 25px;
+    border: 15px solid rgb(153, 153, 153);
+    background-color: rgb(153, 153, 153);
+    padding: 50px;
+    text-align: center;
+}
+
