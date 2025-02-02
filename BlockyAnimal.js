@@ -444,7 +444,6 @@ function renderAllShapes() {
     tail2.color = ORANGE;
     tail2.matrix.translate(0.35,-1.1, 1.25);
     tail2.matrix.rotate(120 ,0, 1, 0);
-    tail2.matrix.rotate(Math.abs(Math.sin(10 * g_seconds)),0, 1, 0);
     tail2.matrix.scale(.1,.1,.45)
     tail2.render(1, 0.55, 0.1);
 

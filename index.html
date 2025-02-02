@@ -6,12 +6,17 @@
     <link rel="stylesheet" href="style.css">
   </head>
 
-  <body onload="main()" style="background-color: rgb(12, 12, 12);">
+  <body onload="main()" style="background-color: rgb(51, 51, 51);">
     <canvas id="webgl" width="500" height="500">
     Please use a browser that supports "canvas"
     </canvas>
     <br><br>
     <div class="container">
+      Drag canvas to rotate cat. .
+      <div>
+        <input type="button" id="reset_cam" value="Reset Camera">
+      </div>
+      <br><br>
       <div>
         Mouth
         <input type="range" min="-0.035" max="0.035" step="0.01" id="slider", value="5">
@@ -19,7 +24,7 @@
         <input type="range" min="0" max="1" step="0.01" id="tail_slider" value="0">
         Camera Angle
         <input type="range" min="0" max="360" id="angleSlider", value="0">
-        <input type="button" id="reset_cam" value="Reset Camera">
+        
       </div>
       <br>
       <div><span id="fps"></span></div>
